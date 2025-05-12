@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark Blue/Near Black */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222.2 84% 4.9%; /* Dark Blue/Near Black */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 222.2 84% 4.9%; /* Dark Blue/Near Black */
+
+    /* Using the user's previously requested colors */
+    --primary: 210 29% 24%; /* Dark Blue (#2C3E50) */
+    --primary-foreground: 210 40% 98%; /* Almost White/Light Gray */
+
+    --secondary: 210 40% 96.1%; /* Light Gray (#ECF0F1) */
+    --secondary-foreground: 210 29% 24%; /* Dark Blue (#2C3E50) */
+
+    --muted: 210 40% 96.1%; /* Light Gray */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Medium Gray */
+
+    --accent: 205 68% 53%; /* Sky Blue (#3498DB) */
+    --accent-foreground: 210 40% 98%; /* Almost White/Light Gray */
+
+    --destructive: 0 84.2% 60.2%; /* Default Red */
+    --destructive-foreground: 0 0% 98%; /* Default White */
+
+    --border: 214.3 31.8% 91.4%; /* Light Gray Border */
+    --input: 214.3 31.8% 91.4%; /* Light Gray Input Border */
+    --ring: 205 68% 53%; /* Sky Blue (#3498DB) */
+
+    --radius: 0.5rem;
+
+    /* Adjusted chart colors for light theme */
+    --chart-1: 205 68% 53%; /* Accent Blue (#3498DB) */
+    --chart-2: 210 29% 24%; /* Primary Dark Blue (#2C3E50) */
+    --chart-3: 0 84.2% 60.2%; /* Destructive Red */
+    --chart-4: 215.4 16.3% 56.9%; /* Darker Muted Gray */
+    --chart-5: 222.2 84% 4.9%; /* Foreground Dark */
+  }
+
+  .dark {
+    /* Make dark theme same as light theme for now */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark Blue/Near Black */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222.2 84% 4.9%; /* Dark Blue/Near Black */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 222.2 84% 4.9%; /* Dark Blue/Near Black */
+
+    --primary: 210 29% 24%; /* Dark Blue (#2C3E50) */
+    --primary-foreground: 210 40% 98%; /* Almost White/Light Gray */
+
+    --secondary: 210 40% 96.1%; /* Light Gray (#ECF0F1) */
+    --secondary-foreground: 210 29% 24%; /* Dark Blue (#2C3E50) */
+
+    --muted: 210 40% 96.1%; /* Light Gray */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Medium Gray */
+
+    --accent: 205 68% 53%; /* Sky Blue (#3498DB) */
+    --accent-foreground: 210 40% 98%; /* Almost White/Light Gray */
+
+    --destructive: 0 72.2% 50.6%; /* Slightly darker red for dark */
+    --destructive-foreground: 0 0% 98%; /* Default White */
+
+    --border: 214.3 31.8% 91.4%; /* Light Gray Border */
+    --input: 214.3 31.8% 91.4%; /* Light Gray Input Border */
+    --ring: 205 68% 53%; /* Sky Blue (#3498DB) */
+
+    --chart-1: 205 68% 53%;
+    --chart-2: 210 29% 24%;
+    --chart-3: 0 72.2% 50.6%;
+    --chart-4: 215.4 16.3% 56.9%;
+    --chart-5: 222.2 84% 4.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  section {
+     @apply py-16 md:py-24 lg:py-32 px-4 md:px-6;
+  }
+}
+
+/* Add subtle scroll animation */
+@layer utilities {
+  .animate-scroll {
+    opacity: 0;
+    transform: translateY(20px); /* Slide up effect */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Slightly adjusted duration */
+  }
+  .in-view .animate-scroll {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .typing-cursor {
+    display: inline-block;
+    width: 2px; /* Adjust width as needed */
+    height: 1em; /* Should match the font height */
+    background-color: hsl(var(--primary)); /* Cursor color */
+    animation: blink-caret 0.75s step-end infinite;
+    margin-left: 2px; /* Space after the last letter */
+    vertical-align: text-bottom; /* Aligns cursor with text */
+  }
+
+  @keyframes blink-caret {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+}
